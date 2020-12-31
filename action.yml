@@ -1,0 +1,7 @@
+# action.yml
+name: 'GitHub Action to push subdirectories to separate repositories.'
+description: 'GitHub Action to push subdirectories to separate repositories.'
+author: 'Daniel Kim <daniel@bitproject.org>'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
