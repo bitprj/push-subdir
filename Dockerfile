@@ -1,6 +1,6 @@
 FROM node:12-slim
 
-LABEL repository="https://github.com/bitprj/push-subdir"
+LABEL repository="https://github.com/emsesc/push-subdir"
 LABEL homepage="https://github.com/bitprj/push-subdir"
 LABEL maintainer="Daniel Kim <daniel@bitproject.org>"
 
