@@ -33,6 +33,7 @@ for folder in $FOLDER/*; do
   find . | grep -v ".git" | grep -v "^\.*$" | xargs rm -rf # delete all files (to handle deletions in monorepo)
   mkdir -p ./$foldername
   cp -r $BASE/$folder/. ./$foldername
+  echo "  Copied files to $foldername"
 
 
   # Commit if there is anything to
