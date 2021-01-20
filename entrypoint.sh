@@ -29,7 +29,7 @@ for folder in $FOLDER/*; do
   git clone --depth 1 https://$API_TOKEN_GITHUB@github.com/$GITHUB_USERNAME/$REPO_NAME.git $CLONE_DIR &> /dev/null
   cd $CLONE_DIR
   find . | grep -v ".git" | grep -v "^\.*$" | xargs rm -rf # delete all files (to handle deletions in monorepo)
-  # cp -r $BASE/$folder/. .
+  cp -r $BASE/$folder/. ./$folder
 
 
   # Commit if there is anything to
