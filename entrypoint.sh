@@ -36,6 +36,7 @@ for folder in $FOLDER/*; do
   # Commit if there is anything to
   if [ -n "$(git status --porcelain)" ]; then
     echo  "  Committing $REPO_NAME to $GITHUB_REPOSITORY"
+    cd ../../
     git add .
     git commit --message "Update $REPO_NAME from $GITHUB_REPOSITORY"
     git push origin $BRANCH_NAME
