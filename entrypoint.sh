@@ -16,6 +16,8 @@ echo "Cloning folders in $FOLDER and pushing to $GITHUB_USERNAME"
 # sync to read-only clones
 for folder in $FOLDER/*; do
   [ -d "$folder" ] || continue # only directories
+  cd $folder
+  foldername=${PWD##*/}
   cd $BASE
 
   echo "$folder"
@@ -29,14 +31,13 @@ for folder in $FOLDER/*; do
   git clone --depth 1 https://$API_TOKEN_GITHUB@github.com/$GITHUB_USERNAME/$REPO_NAME.git $CLONE_DIR &> /dev/null
   cd $CLONE_DIR
   find . | grep -v ".git" | grep -v "^\.*$" | xargs rm -rf # delete all files (to handle deletions in monorepo)
-  mkdir -p ./$folder
-  cp -r $BASE/$folder/. ./$folder
+  mkdir -p ./$foldername
+  cp -r $BASE/$folder/. ./$foldername
 
 
   # Commit if there is anything to
   if [ -n "$(git status --porcelain)" ]; then
     echo  "  Committing $REPO_NAME to $GITHUB_REPOSITORY"
-    cd ../../
     git add .
     git commit --message "Update $REPO_NAME from $GITHUB_REPOSITORY"
     git push origin $BRANCH_NAME
