@@ -30,7 +30,7 @@ for folder in $FOLDER/*; do
   # this handles file deletions, additions, and changes seamlessly
   git clone --depth 1 https://$API_TOKEN_GITHUB@github.com/$GITHUB_USERNAME/$REPO_NAME.git $CLONE_DIR &> /dev/null
   cd $CLONE_DIR
-  [ -d $foldername ] && find . | grep -v ".git" | grep -v "^\.*$" | xargs rm -rf
+  [ -d $foldername ] && find ./$foldername | grep -v ".git" | grep -v "^\.*$" | xargs rm -rf
   # delete all files only in that folder if folder exists
   mkdir -p ./$foldername
   cp -r $BASE/$folder/. ./$foldername
