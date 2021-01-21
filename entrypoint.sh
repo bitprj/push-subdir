@@ -47,6 +47,7 @@ for folder in $FOLDER/*; do
     echo "  No changes, skipping $BASE/$folder/"
   fi
   
+  cd ..
   rm -r $CLONE_DIR
   cd $BASE
 done
